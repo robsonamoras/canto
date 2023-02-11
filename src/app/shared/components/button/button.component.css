@@ -1,0 +1,27 @@
+.btn {
+  padding: 10px 20px !important;
+  margin: 1px 3px !important;
+}
+
+.btn-canto-primary:enabled {
+  background-color: rgb(255, 230, 0) !important;
+  color: white !important;
+  border: calc(var(--context) * 1) rem solid rgb(255, 230, 0) !important;
+}
+
+.btn-canto-yellow-secondary {
+  background-color: white !important;
+  color: black !important;
+  border: calc(var(--context) * 1) rem solid white !important;
+}
+
+.btn-canto-secondary {
+  background-color: #001e72 !important;
+  border: calc(var(--context) * 1) rem solid rgb(255, 230, 0) !important;
+}
+
+.btn-canto-primary:disabled {
+  background-color: white !important;
+  color: #969290 !important;
+  border: calc(var(--context) * 1) rem solid white !important;
+}
