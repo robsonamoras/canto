@@ -1,3 +1,4 @@
+import { ProcessHTTPMsgService } from './process-http-msg.service';
 import {
   HttpClient,
   HttpErrorResponse,
@@ -16,14 +17,15 @@ export class AbstractDataService {
   private readonly API = 'environment.urlPrincipalAPI'; // aqui será colocada a url principal da api que deve está em variavel de ambientes
   private headers: HttpHeaders;
   private params: HttpParams = new HttpParams();
-  constructor(protected http: HttpClient) {
+
+  constructor(protected http: HttpClient, private processHTTPMsgService: ProcessHTTPMsgService) {
     this.headers = new HttpHeaders();
     this.headers.append('Content-Type', 'application/json');
   }
 
   getAll<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string) {
     this.url = this.montarUrl(modelo, urlAlternativa);
-    return this.http.get<T[]>(this.url).pipe(tap(console.log));
+    return this.http.get<T[]>(this.url).pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   getById<T extends ModeloGenerico>(
@@ -34,7 +36,7 @@ export class AbstractDataService {
     this.url = `${this.API}/${modelo.getKey()}/${filtro}`;
     this.http
       .get<T>(this.url, { headers: this.headers, params: this.params })
-      .pipe(take(1), tap(console.log));
+      .pipe(take(1), catchError(this.processHTTPMsgService.handleError));
   }
 
   post<T extends ModeloGenerico>(
@@ -45,12 +47,12 @@ export class AbstractDataService {
     this.url = this.montarUrl(modelo, urlAlternativa);
     return this.http
       .post(this.url, objeto, { headers: this.headers })
-      .pipe(take(1));
+      .pipe(take(1), catchError(this.processHTTPMsgService.handleError));
   }
 
   put<T extends ModeloGenerico>(objeto: T, modelo: T, urlAlternativa?: string) {
     this.url = this.montarUrl(modelo, urlAlternativa);
-    return this.http.put(this.url, objeto).pipe(take(1));
+    return this.http.put(this.url, objeto).pipe(take(1), catchError(this.processHTTPMsgService.handleError));
   }
 
   delete<T extends ModeloGenerico>(
@@ -69,7 +71,7 @@ export class AbstractDataService {
     }
     return this.http
       .delete(this.url, { headers: this.headers, params: this.params })
-      .pipe(take(1), catchError(this.handlerError));
+      .pipe(take(1), catchError(this.handlerError)); // outro jeito de exibir msg de erro
   }
 
   montarUrl<T extends ModeloGenerico>(

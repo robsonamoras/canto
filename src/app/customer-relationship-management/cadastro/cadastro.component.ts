@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,11 +17,11 @@ export class CadastroComponent implements OnInit {
 
   configurateForm(): void{
     this.form = this.formBuilder.group({
-      nome: ['', Validators.required]
+      nome: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
     })
   }
 
   salvar(): void{
   }
-
 }

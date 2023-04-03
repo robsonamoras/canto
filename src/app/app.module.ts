@@ -1,5 +1,5 @@
 import { CustomPaginatorService } from './shared/services/custom-paginator.service';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -41,5 +41,6 @@ registerLocaleData(pt, 'pt')
   providers: [{provide: LOCALE_ID, useValue: 'pt-BR'},
   {provide: MatPaginatorIntl, useClass: CustomPaginatorService }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

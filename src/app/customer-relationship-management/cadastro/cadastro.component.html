@@ -4,25 +4,43 @@
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       <form method="post" (ngSubmit)="salvar()" [formGroup]="form">
-        <div class="row">
+        <div class="row example-container">
           <mat-form-field appearance="fill">
             <mat-label> Nome </mat-label>
-            <input matInput formControlName="nome" placeholder="Nome"/>
-            <mat-error *ngIf="form.controls['nome'].value.valid"></mat-error>
-            <span *ngIf="form.controls['nome'].value.valid">Nome é obrigatório</span>
+            <input
+              matInput
+              formControlName="nome"
+              placeholder="Nome"
+              required
+            />
+            <mat-error *ngIf="form.controls['nome'].invalid"
+              ><span *ngIf="form.controls['nome'].invalid"
+                >Nome é obrigatório</span
+              ></mat-error
+            >
           </mat-form-field>
+        </div>
+        <div class="example-container">
           <mat-form-field appearance="fill">
-            <mat-label>Input</mat-label>
-            <input matInput>
+            <mat-label>Enter your email</mat-label>
+            <input
+              matInput
+              placeholder="pat@example.com"
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="form.controls['email'].invalid">
+              <span *ngIf="form.controls['email'].invalid"
+                >E-mail é obrigatório</span
+              >
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="row">
           <div class="col">
-            <button
-            class="btn btn-dark"
-            type="submit"
-            [disabled]="!form.valid"
-          >Salvar</button>
+            <button class="btn btn-dark" type="submit" [disabled]="!form.valid">
+              Salvar
+            </button>
           </div>
         </div>
       </form>
