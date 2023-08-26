@@ -1,27 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { Canto } from './../../shared/models/canto';
+import { AbstractDataService } from './../../shared/services/abstract-data.service';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
   form!: FormGroup;
-  constructor(private formBuilder: FormBuilder){
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private abstractDataService: AbstractDataService
+  ) {}
   ngOnInit(): void {
     this.configurateForm();
   }
 
-  configurateForm(): void{
+  configurateForm(): void {
     this.form = this.formBuilder.group({
       nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
-    })
+      cpf: [''],
+      celular: [''],
+      email: ['', [Validators.required, Validators.email]],
+    });
   }
 
-  salvar(): void{
+  onSubmit(): void {
+    this.abstractDataService.getAll(new Canto());
   }
 }

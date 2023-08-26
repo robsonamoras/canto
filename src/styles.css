@@ -1,3 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+mat-form-field {
+  height: 100% !important;
+  display: inline !important;
+}
+
+.body-canto {
+  background-color: #d3d3d3;
+}
+
+.card-footer{
+    color: transparent  !important;
+    background-color: transparent !important;
+    border-top: none !important;
+    text-align: end;
+}
+
+.canto-primary, .canto-primary:disabled, .canto-primary:active {
+  background-color: #7c6c3b;
+  color: white;
+}
+
+.canto-primary:hover {
+  background-color: #7c6c3b;
+  color: white;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 1px 3px;
+}
+
+.color-canto {
+  background-color: #ffc107;
+  color: #000000;
+}
+
+.color-text {
+  color:  #000000 !important;
+  font-size: 20px;
+}
+
+.card-header-canto {
+  background-color: #ffc107;
+  color:  #000000;
+  border-radius: 5px !important;
+  padding: 10px 25px 10px !important;
+  margin-top: -15px !important;
+  margin: 10px;
+}
+
+.card-title-canto {
+  margin-bottom: 0px !important;
+}
+
+.espaco-vazio {
+  /* flex: 1 1 auto; */
+  height: 30px;
+}

@@ -1,49 +1,97 @@
-<app-navbar></app-navbar>
+<div class="espaco-vazio"></div>
 <div class="container">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <form method="post" (ngSubmit)="salvar()" [formGroup]="form">
-        <div class="row example-container">
-          <mat-form-field appearance="fill">
-            <mat-label> Nome </mat-label>
-            <input
-              matInput
-              formControlName="nome"
-              placeholder="Nome"
-              required
-            />
-            <mat-error *ngIf="form.controls['nome'].invalid"
-              ><span *ngIf="form.controls['nome'].invalid"
-                >Nome é obrigatório</span
-              ></mat-error
-            >
-          </mat-form-field>
-        </div>
-        <div class="example-container">
-          <mat-form-field appearance="fill">
-            <mat-label>Enter your email</mat-label>
-            <input
-              matInput
-              placeholder="pat@example.com"
-              formControlName="email"
-              required
-            />
-            <mat-error *ngIf="form.controls['email'].invalid">
-              <span *ngIf="form.controls['email'].invalid"
-                >E-mail é obrigatório</span
-              >
-            </mat-error>
-          </mat-form-field>
-        </div>
+  <mat-card class="example-card">
+    <mat-card-header class="card-header-canto">
+      <mat-card-title class="card-title-canto"
+        >Cadastro de Cliente</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <br />
+      <form method="post" (ngSubmit)="onSubmit()" [formGroup]="form">
+        <!-- Primeira linha -->
         <div class="row">
-          <div class="col">
-            <button class="btn btn-dark" type="submit" [disabled]="!form.valid">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Nome</mat-label>
+              <input
+                matInput
+                formControlName="nome"
+                placeholder="Nome"
+                required
+              />
+              <mat-error *ngIf="form.controls['nome'].invalid"
+                ><span *ngIf="form.controls['nome'].invalid"
+                  >Nome é obrigatório</span
+                ></mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>CPF</mat-label>
+              <input
+                matInput
+                formControlName="cpf"
+                placeholder="CPF"
+                required
+              />
+              <mat-error *ngIf="form.controls['cpf'].invalid"
+                ><span *ngIf="form.controls['cpf'].invalid"
+                  >CPF é obrigatório</span
+                ></mat-error
+              >
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- Segunda linha -->
+        <div class="row row-gap-12">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Celular</mat-label>
+              <input
+                matInput
+                placeholder="Celular"
+                formControlName="celular"
+                required
+              />
+              <mat-error *ngIf="form.controls['celular'].invalid">
+                <span *ngIf="form.controls['celular'].invalid"
+                  >Celular é obrigatório</span
+                >
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>E-mail</mat-label>
+              <input
+                matInput
+                placeholder="pat@example.com"
+                formControlName="email"
+                required
+              />
+              <mat-error *ngIf="form.controls['email'].invalid">
+                <span *ngIf="form.controls['email'].invalid"
+                  >E-mail é obrigatório</span
+                >
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- Botao -->
+        <div class="card-footer">
+          <div class="col-md-12">
+            <button
+              class="btn btn-warning btn-sm color-text"
+              type="submit"
+              [disabled]="!form.valid"
+            >
               Salvar
             </button>
           </div>
         </div>
       </form>
-    </div>
-  </div>
+    </mat-card-content>
+  </mat-card>
 </div>
